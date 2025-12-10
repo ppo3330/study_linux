@@ -1,0 +1,29 @@
+== 실습1: 파일 권한 테스트 ==
+ user1:
+   ↓
+ [1] test.txt 생성
+     echo "hello" > test.txt
+
+ [2] chmod 600 test.txt
+     → 소유자만 읽기/쓰기
+
+   ↓
+ user2로 전환 (su - user2)
+   ↓
+ [3] user2가 test.txt 읽기 시도
+     cat /home/user1/test.txt
+
+   ↓
+ [결과 A]
+   Permission denied → 정상!
+   → 권한 차이 체감 성공
+
+   ↓
+ user1로 돌아옴 (exit)
+   ↓
+ [4] chmod 644 test.txt
+   ↓
+ user2 전환 후 읽기 재시도
+   ↓
+ [결과 B]
+   파일 읽힘 → 권한 변화 체감 완료

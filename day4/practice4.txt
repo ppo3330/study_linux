@@ -1,0 +1,18 @@
+== 실습4: SUID 테스트 ==
+ user1 또는 root:
+   ↓
+ [1] SUID가 이미 걸린 시스템 명령 확인
+     ls -l /usr/bin/passwd
+     → -rwsr-xr-x 형태 확인 ("s" 존재)
+
+   ↓
+ user2:
+   ↓
+ [2] passwd 실행
+     passwd
+
+   ↓
+ [결과]
+   user2가 비번 변경 가능 → 실제로는 root 권한이 잠깐 빌려짐
+
+   → SUID의 권한 위임 원리를 체감!

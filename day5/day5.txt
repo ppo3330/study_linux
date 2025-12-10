@@ -1,0 +1,24 @@
+[Day 5 - Privilege Escalation 탐색 및 linPEAS 분석]
+
+1. 권환 확인
+ - whoami
+ - id 
+ - sudo -l
+
+2. SUID 파일검사
+ - 권한상승 가능 파일들을 확인해봄.
+  -> testfile이 있었으나 이는 디렉토리이므로 안전.
+
+3. polkit(pkexec) / sudo 취약점 점검
+ - linPEAS가 아래와 같은 메시지를 보여줬다:
+  - CVE-2021-4034 (PwnKit)
+  - CVE-2021-3156 (sudo Baron Samedit)
+  ->Ubuntu 22.04 는 패치 이후 상태 취약 X
+ - 코드 실행 공격이 가능하지 않은 상태
+ 
+ 
+   Day5에서 배운 개념
+SUID: 특정 프로그램이 root 권한으로 실행되는 기능
+sudo 권한 점검은 보안에서 기본 중 기본
+자동화 도구(linPEAS)는 false positive가 많다는 점
+실제로 취약한지 여부는 OS 패치 상태를 봐야 한다

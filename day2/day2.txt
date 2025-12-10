@@ -1,0 +1,5 @@
+day2
+- study about linux(commands: ls, cd, mkdir, touch, nano, etc)
+- permission 
+- 한글패치 완료
+

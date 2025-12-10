@@ -1,0 +1,5 @@
+day1
+
+ready for studying linux
+- download ubuntu and other tools
+- learn the commands in linux

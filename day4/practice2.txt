@@ -1,0 +1,16 @@
+== 실습2: chown 테스트 ==
+ user1:
+   ↓
+ [1] chown user2 test.txt 실행
+   ↓
+ [결과 A]
+   "명령을 허용하지 않음" → 정상
+
+   ↓
+[2] sudo chown user2 test.txt (root 권한 사용)
+   ↓
+[결과 B]
+   변경 성공
+
+   → 결론:
+     chown은 root(또는 sudo)만 가능함을 체감!
